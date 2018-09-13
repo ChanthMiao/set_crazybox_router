@@ -1,11 +1,11 @@
 # coding=utf-8
 # 添加引用
 import requests
-import pickle
+import json
 # 尝试导入先前账号密码
 try:
-    ins = open('data.pkl', 'rb')
-    payload2 = pickle.load(ins)
+    ins = open('data.json', 'r')
+    payload2 = json.load(ins)
 except Exception as err:
     # 否则输入宽带账号密码
     name = input(u"输入账号")
@@ -39,6 +39,6 @@ result2 = session_requests.post(new_url, data=payload2)
 # 打印结果提示页面
 print(result2.content)
 # 存储账号密码
-output = open('data.pkl', 'wb')
-pickle.dump(payload2, output)
+output = open('data.json', 'w')
+json.dump(payload2, output)
 output.close()
